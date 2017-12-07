@@ -8,8 +8,6 @@ Basculez sur la branch `front` pour le frontend ou `back` pour le backend
 
 ### Objets impliqués dans la communication
 
-![Objets](img/objects.jpg)
-
 * `Message` : L'objet représentant un message du serveur au client
   * `id` : Une *string* identifiant le message de maniere unique
   * `type` : Une *string* représentant le type de message envoyé
@@ -45,8 +43,6 @@ Basculez sur la branch `front` pour le frontend ou `back` pour le backend
   * `radius` : Un *Number* représentant le rayon de la zone
 
 ### Sequence de communication
-
-![Objets](img/objects.jpg)
 
 #### Lors de la connection
 
