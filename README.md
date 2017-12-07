@@ -8,8 +8,6 @@ Basculez sur la branch `front` pour le frontend ou `back` pour le backend
 
 ### Objets impliqués dans la communication
 
-![Objets](img/objects.jpg)
-
 * `Message` : L'objet représentant un message du serveur au client
   * `id` : Une *string* identifiant le message de maniere unique
   * `type` : Une *string* représentant le type de message envoyé
@@ -46,4 +44,21 @@ Basculez sur la branch `front` pour le frontend ou `back` pour le backend
 
 ### Sequence de communication
 
-![Objets](img/objects.jpg)
+#### Lors de la connection
+
+1. Le client envoie uen requète HTTP vers la page
+2. Le serveur renvoie la page statique avec le JS
+3. Le client envoie un event socket.io `RequestConnection` pour demander une connection
+4. Le serveur envoie un event socket.io `AcceptedConnection` avec un objet `User` representant l'utilisateur actuel
+5. Le serveur envoie un event socket.io `ReceivedMessage` avec un objet `Message` de bienvenue et les options initiales
+
+#### Lors de l'activation d'une option de message
+
+1. Le client envoie un event `ReceivedOption` avec un objet `MessageOption` que l'utilisateur a choisi
+2. Le serveur traite l'option
+3. Le serveur envoie un event `ReceivedMessage` avec la réponse du bot et les options suivantes
+
+#### Quand l'utilisateur change de position
+
+1. Le client envoie un event `UpdateLocation` avec un objet `Location` representant la nouvelle position de l'utilisateur
+2. Le serveur enregistre la nouvelle position puis traite la demande
