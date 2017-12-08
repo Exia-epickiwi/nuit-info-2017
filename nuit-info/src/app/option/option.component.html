@@ -1,7 +1,9 @@
 <div class="option">
   <div class="content-wrapper">
-    <div class="icon-wrapper">
-      <div class="icon"></div>
+    <div class="icon-wrapper" *ngIf="option.iconUrl && option.iconUrl != ''">
+      <div class="icon">
+        <img src="{{option.iconUrl}}" alt="{{option.text}}">
+      </div>
     </div>
     <div class="title">
       {{option.text}}

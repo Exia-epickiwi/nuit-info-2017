@@ -11,6 +11,7 @@ export class WebsocketService {
 
   connect() {
     this.socket = io(environment.ws_url);
+    this.socket.emit("RequestConnection")
   }
 
   getIo(){

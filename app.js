@@ -1,15 +1,15 @@
-var app = require('express')(),
+var express = require('express'),
+	app = express(),
 	server = require('http').createServer(app),
 	io = require('socket.io')(server),
-	ent = require('ent'),
-	fs = require('fs'),
 	User = require('./users'),
+	MessageOption = require("./MessageOption"),
+	Message = require("./message"),
+	routes = require("./routes/routes"),
 	users = new Map(),
 	id = 0;
 
-app.get('/', function(require, res){
-	res.sendFile(__dirname + '/view/index.html');
-});
+app.use("/",express.static(__dirname+"/public"))
 
 io.sockets.on('connection', function(socket, token){
 
@@ -36,18 +36,13 @@ io.sockets.on('connection', function(socket, token){
 		// Envoi d'un event AcceptedConnection avec un objet user représentant l'utilisateur actuel.
 		socket.emit("AcceptedConnection", socket.user);
 
-
-//		Envoi d'un event received message avec le message de bienvenue et les options initiales.
-		let options = [
-		new MessageOption("CreateEvent", "Créer un évènement", "http://www.freeiconspng.com/uploads/logo-ford-mustang-png-19.png"),
-		new MessageOption("JoinEvent", "Joindre un évènement", "http://www.rw-designer.com/icon-image/4230-256x256x32.png")];
-
-		socket.emit("ReceivedMessage", new Message(1, "text", options))
+		routes.exec("index",socket)
 
 	});
 
 	socket.on('ReceivedOption', function(messageOption){
-        console.log(`User option selected ${option.type} `)
+        console.log(`User option selected ${messageOption.type} `)
+		routes.exec(messageOption.type,socket)
 	});
 
 
