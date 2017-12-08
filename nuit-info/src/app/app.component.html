@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div id="app">
 
   <div class="main-panel">
@@ -5,36 +6,7 @@
 
     <section class="main-section">
       <div class="message-wrapper" >
-        <app-message [message]="{type:'text',content:'Je suis un homme en colere'}"></app-message>
-        <app-message [message]="{type:'text',content:'moi aussi'}" [other]="true"></app-message>
-        <app-message [message]="{type:'text',content:'hello'}"></app-message>
-        <app-message [message]="{type:'text',content:'Je suis un homme en colere'}"></app-message>
-        <app-message [message]="{type:'text',content:'moi aussi'}" [other]="true"></app-message>
-        <app-message [message]="{type:'text',content:'hello'}"></app-message>
-        <app-message [message]="{type:'text',content:'Je suis un homme en colere'}"></app-message>
-        <app-message [message]="{type:'text',content:'moi aussi'}" [other]="true"></app-message>
-        <app-message [message]="{type:'text',content:'hello'}"></app-message>
-        <app-message [message]="{type:'text',content:'Je suis un homme en colere'}"></app-message>
-        <app-message [message]="{type:'text',content:'moi aussi'}" [other]="true"></app-message>
-        <app-message [message]="{type:'text',content:'hello'}"></app-message>
-        <app-message [message]="{type:'text',content:'Je suis un homme en colere'}"></app-message>
-        <app-message [message]="{type:'text',content:'moi aussi'}" [other]="true"></app-message>
-        <app-message [message]="{type:'text',content:'hello'}"></app-message>
-        <app-message [message]="{type:'text',content:'Je suis un homme en colere'}"></app-message>
-        <app-message [message]="{type:'text',content:'moi aussi'}" [other]="true"></app-message>
-        <app-message [message]="{type:'text',content:'hello'}"></app-message>
-        <app-message [message]="{type:'text',content:'Je suis un homme en colere'}"></app-message>
-        <app-message [message]="{type:'text',content:'moi aussi'}" [other]="true"></app-message>
-        <app-message [message]="{type:'text',content:'hello'}"></app-message>
-        <app-message [message]="{type:'text',content:'Je suis un homme en colere'}"></app-message>
-        <app-message [message]="{type:'text',content:'moi aussi'}" [other]="true"></app-message>
-        <app-message [message]="{type:'text',content:'hello'}"></app-message>
-        <app-message [message]="{type:'text',content:'Je suis un homme en colere'}"></app-message>
-        <app-message [message]="{type:'text',content:'moi aussi'}" [other]="true"></app-message>
-        <app-message [message]="{type:'text',content:'hello'}"></app-message>
-        <app-message [message]="{type:'text',content:'Je suis un homme en colere'}"></app-message>
-        <app-message [message]="{type:'text',content:'moi aussi'}" [other]="true"></app-message>
-        <app-message [message]="{type:'text',content:'hello'}"></app-message>
+        <app-message *ngFor="let message of messages" [message]="message"></app-message>
       </div>
       <div class="options">
         <app-option [option]="{type:'a',text:'Option 1', iconUrl:''}"></app-option>
@@ -48,7 +20,6 @@
       </div>
     </section>
   </div>
-
   <footer>
     <div class="big-button">A</div>
   </footer>
