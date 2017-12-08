@@ -18,12 +18,16 @@ io.on('connection', (socket) => {
 
     socket.on('message', (message) => {
         console.log("Message Received: "+message);
-        io.emit('message',{type:'new-message', text:message});
+        io.emit('ReceivedMessage',{type:'text', text:"Quel fruit ?", options: [
+            {type:"kiwi",text:"Kiwi",iconUrl:""},
+            {type:"poire",text:"Poire",iconUrl:""},
+            {type:"peche",text:"Peche",iconUrl:""},
+            {type:"pomme",text:"Pomme",iconUrl:""},
+            {type:"banane",text:"banane",iconUrl:""}
+        ]});
     });
 });
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -32,10 +36,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get("/",(req,res)=>{
     res.sendFile(__dirname+"/view/index.html")
-})
-
-app.listen(8080,()=>{
-  console.log("Listening on *:8080")
 })
 
 http.listen(5000, () => {

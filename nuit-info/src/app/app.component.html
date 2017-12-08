@@ -1,27 +1,21 @@
-<<<<<<< HEAD
 <div id="app">
 
   <div class="main-panel">
     <header><h1>{{appTitle}}</h1></header>
 
-    <section class="main-section">
-      <div class="message-wrapper" >
+    <section class="main-section" (resize)="onMessagesResize()">
+      <div class="message-wrapper">
         <app-message *ngFor="let message of messages" [message]="message"></app-message>
       </div>
       <div class="options">
-        <app-option [option]="{type:'a',text:'Option 1', iconUrl:''}"></app-option>
-        <app-option [option]="{type:'b',text:'Option 2', iconUrl:''}"></app-option>
-        <app-option [option]="{type:'c',text:'Option 3', iconUrl:''}"></app-option>
-        <app-option [option]="{type:'d',text:'Option 4', iconUrl:''}"></app-option>
-        <app-option [option]="{type:'e',text:'Option 5', iconUrl:''}"></app-option>
-        <app-option [option]="{type:'f',text:'Option 6', iconUrl:''}"></app-option>
-        <app-option [option]="{type:'g',text:'Option 7', iconUrl:''}"></app-option>
-        <app-option [option]="{type:'h',text:'Option 8', iconUrl:''}"></app-option>
+        <app-option
+          *ngFor="let option of options"
+          [option]="option"></app-option>
       </div>
     </section>
   </div>
   <footer>
-    <div class="big-button">A</div>
+    <div class="big-button" (click)="sendMessage()">A</div>
   </footer>
 
 </div>
