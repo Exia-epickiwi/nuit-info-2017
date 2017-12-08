@@ -9,17 +9,33 @@ app.get('/', function(require, res){
 });
 
 io.sockets.on('connection', function(socket, token){
-	socket.on('nouveau_client', function(token){
+	socket.on('RequestConnection', function(token){
 		if(token === null)
 		{
 			//generate token to save the user
 		}
 		socket.token = token;
 		//Create the User object
+		/* Envoi d'un event AcceptedConnection avec un objet user représentant l'utilisateur actuel.
+		socket.emit()
+
+		Envoi d'un event received message avec le message de bienvenue et les options initiales.
+		socket.emit()
+		*/
 	});
 
-	socket.on('message', function(message){
+	socket.on('ReceivedOption', function(messageOption){
 		// Décrypter le message pour l'analyser
+		/*Effectuer une réponse en prennant en compte le message envoyé en JSON
+		socket.emit()
+		*/
+	});
+
+
+	socket.on('UpdateLocation', function(location)
+	{
+		//Recupérer la position de l'utilisateur et modifier l'objet User. Voir pour envoyer un message, ...
+
 
 	});
 
