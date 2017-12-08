@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-
+import {ChatService} from "./Chat-service";
+import {WebsocketService} from "./Socket-service";
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [ChatService,WebsocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
