@@ -33,11 +33,11 @@ io.sockets.on('connection', function(socket, token){
 
 
 //		Envoi d'un event received message avec le message de bienvenue et les options initiales.
-		let options = new Array();
+		let options = [];
 		options[0] = new MessageOption("CreateEvent", "Créer un évènement", "http://www.freeiconspng.com/uploads/logo-ford-mustang-png-19.png");
 		options[1] = new MessageOption("JoinEvent", "Joindre un évènement", "http://www.rw-designer.com/icon-image/4230-256x256x32.png");
 		
-		socket.emit("ReceivedMessage": new Message(1, "text", options))
+		socket.emit("ReceivedMessage", new Message(1, "text", options))
 		
 	});
 
