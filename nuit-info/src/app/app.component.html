@@ -1,0 +1,21 @@
+<div id="app">
+
+  <div class="main-panel">
+    <header><h1>{{appTitle}}</h1></header>
+
+    <section class="main-section" (resize)="onMessagesResize()">
+      <div class="message-wrapper">
+        <app-message *ngFor="let message of messages" [message]="message"></app-message>
+      </div>
+      <div class="options">
+        <app-option
+          *ngFor="let option of options"
+          [option]="option" (click)="onOptionClick(option)"></app-option>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <div class="big-button" (click)="sendMessage()">A</div>
+  </footer>
+
+</div>

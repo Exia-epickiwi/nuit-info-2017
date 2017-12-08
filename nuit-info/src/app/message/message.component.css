@@ -1,0 +1,22 @@
+.message {
+  margin: 10px 5px;
+  background-color: #da2b00;
+  width: 80%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.message.other {
+  background-color: rgba(0, 0, 0, 0.15);
+  margin-left: auto;
+}
+
+.text-content {
+  padding: 5px;
+  color: #f6d0c7;
+}
+
+.other .text-content {
+  color: #212426;
+  text-align: right;
+}
