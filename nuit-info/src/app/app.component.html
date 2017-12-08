@@ -10,7 +10,7 @@
       <div class="options">
         <app-option
           *ngFor="let option of options"
-          [option]="option"></app-option>
+          [option]="option" (click)="onOptionClick(option)"></app-option>
       </div>
     </section>
   </div>

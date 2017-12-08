@@ -16,16 +16,21 @@ io.on('connection', (socket) => {
         console.log('user disconnected');
     });
 
-    socket.on('message', (message) => {
-        console.log("Message Received: "+message);
-        io.emit('ReceivedMessage',{type:'text', text:"Quel fruit ?", options: [
-            {type:"kiwi",text:"Kiwi",iconUrl:""},
-            {type:"poire",text:"Poire",iconUrl:""},
-            {type:"peche",text:"Peche",iconUrl:""},
-            {type:"pomme",text:"Pomme",iconUrl:""},
-            {type:"banane",text:"banane",iconUrl:""}
+    io.emit('ReceivedMessage',{type:'text', text:"Quel fruit ?", options: [
+        {type:"kiwi",text:"Kiwi",iconUrl:""},
+        {type:"poire",text:"Poire",iconUrl:""},
+        {type:"peche",text:"Peche",iconUrl:""},
+        {type:"pomme",text:"Pomme",iconUrl:""},
+        {type:"banane",text:"banane",iconUrl:""}
+    ]});
+
+    socket.on("MessageOption",(option)=>{
+        console.log(`User option selected ${option.type} `)
+        io.emit('ReceivedMessage',{type:'text', text:"Vraiment ?", options: [
+            {type:"oui",text:"Oui",iconUrl:""},
+            {type:"non",text:"Non",iconUrl:""}
         ]});
-    });
+    })
 });
 
 app.use(logger('dev'));

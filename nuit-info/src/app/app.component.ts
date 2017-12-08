@@ -25,4 +25,9 @@ export class AppComponent {
   sendMessage() {
     this.socketService.getIo().emit("message","Test Message");
   }
+
+  onOptionClick(option) {
+    this.options = []
+    this.socketService.getIo().emit("MessageOption",option)
+  }
 }
