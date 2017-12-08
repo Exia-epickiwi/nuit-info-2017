@@ -24,7 +24,8 @@
             // Quand un nouveau client se connecte, on affiche l'information
             socket.on('User', function(user) {
             	console.log(user);
-                $('#zone_chat').prepend('<p><em>' + user.name + ' a rejoint le Chat !</em></p>');
+                user.name = 'Myriam';
+                $('#zone_chat').prepend('<p><em>' + user.name + user.id + ' a rejoint le Chat !</em></p>');
             });
 
         </script>

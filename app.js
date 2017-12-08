@@ -3,7 +3,9 @@ var app = require('express')(),
 	io = require('socket.io').listen(server),
 	ent = require('ent'), //equalivalent à htmlentities en php
 	fs = require('fs'),
-	User = require('./users');
+	User = require('./users'),
+	users = new Map(),
+	id = 0;
 
 app.get('/', function(require, res){
 	res.sendFile(__dirname + '/view/index.html');
@@ -11,13 +13,20 @@ app.get('/', function(require, res){
 
 io.sockets.on('connection', function(socket, token){
 	socket.on('RequestConnection', function(token){
-		if(token === null)
-		{
+		console.log(users.get(token));
+		if(users.get(token) == null)
+		{	
+			id++;
+			socket.user = new User(id);
+			users.set(id, socket.user);
 			//generate token to save the user
+		}else
+		{
+			socket.user = users.get(token);
 		}
-		socket.token = token;
-		socket.user = new User(token);
-		console.log("bonjour");
+		
+		console.log("Bonjour, "+socket.user.name+" a l'id "+socket.user.id);
+
 		//Create the User object
 		// Envoi d'un event AcceptedConnection avec un objet user représentant l'utilisateur actuel.
 		socket.emit("User", socket.user);
