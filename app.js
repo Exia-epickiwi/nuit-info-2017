@@ -2,7 +2,8 @@ var app = require('express')(),
 	server = require('http').createServer(app),
 	io = require('socket.io').listen(server),
 	ent = require('ent'), //equalivalent à htmlentities en php
-	fs = require('fs');
+	fs = require('fs'),
+	User = require('./users');
 
 app.get('/', function(require, res){
 	res.sendFile(__dirname + '/view/index.html');
@@ -15,10 +16,13 @@ io.sockets.on('connection', function(socket, token){
 			//generate token to save the user
 		}
 		socket.token = token;
+		socket.user = new User(token);
+		console.log("bonjour");
 		//Create the User object
-		/* Envoi d'un event AcceptedConnection avec un objet user représentant l'utilisateur actuel.
-		socket.emit()
+		// Envoi d'un event AcceptedConnection avec un objet user représentant l'utilisateur actuel.
+		socket.emit("User", socket.user);
 
+/*
 		Envoi d'un event received message avec le message de bienvenue et les options initiales.
 		socket.emit()
 		*/
@@ -41,6 +45,6 @@ io.sockets.on('connection', function(socket, token){
 
 });
 
-app.listen(8080,()=>{
+server.listen(8080,()=>{
   console.log("Listening on *:8080")
 })
