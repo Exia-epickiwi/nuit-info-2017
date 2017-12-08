@@ -1,0 +1,8 @@
+<div class="message" [ngClass]="{'other':other}">
+
+  <p class="text-content"
+     *ngIf="message.type == 'text'">
+    {{message.content}}
+  </p>
+
+</div>
